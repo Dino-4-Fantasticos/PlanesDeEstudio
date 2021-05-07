@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/PlanesDeEstudio/static/css/main.2698350a.chunk.css",
-    "main.js": "/PlanesDeEstudio/static/js/main.2682649c.chunk.js",
-    "main.js.map": "/PlanesDeEstudio/static/js/main.2682649c.chunk.js.map",
+    "main.js": "/PlanesDeEstudio/static/js/main.39a50033.chunk.js",
+    "main.js.map": "/PlanesDeEstudio/static/js/main.39a50033.chunk.js.map",
     "runtime-main.js": "/PlanesDeEstudio/static/js/runtime-main.32d2d08b.js",
     "runtime-main.js.map": "/PlanesDeEstudio/static/js/runtime-main.32d2d08b.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/PlanesDeEstudio/static/css/2.4c97ca4f.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.1028cfcf.chunk.js",
     "static/css/main.2698350a.chunk.css",
-    "static/js/main.2682649c.chunk.js"
+    "static/js/main.39a50033.chunk.js"
   ]
 }
