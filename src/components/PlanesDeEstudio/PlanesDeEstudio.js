@@ -59,6 +59,7 @@ export default function PlanesDeEstudio() {
             variant="primary"
             value={clave}
             href={`${PUBLIC_URL}/#/plan/${clave}`}
+            target="_blank"
           >
             {nombre}    
           </Button>
