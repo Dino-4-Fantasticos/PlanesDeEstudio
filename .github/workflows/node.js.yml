@@ -48,3 +48,6 @@ jobs:
         with:
           branch: gh-pages
           folder: build
+        env:
+          REACT_APP_BACKEND_URL: https://planes-de-estudio-backend.herokuapp.com/api
+
