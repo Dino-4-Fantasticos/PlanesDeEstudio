@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/PlanesDeEstudio/static/css/main.0fcc9966.chunk.css",
-    "main.js": "/PlanesDeEstudio/static/js/main.79d571fd.chunk.js",
-    "main.js.map": "/PlanesDeEstudio/static/js/main.79d571fd.chunk.js.map",
+    "main.css": "/PlanesDeEstudio/static/css/main.23011fee.chunk.css",
+    "main.js": "/PlanesDeEstudio/static/js/main.d3353f0a.chunk.js",
+    "main.js.map": "/PlanesDeEstudio/static/js/main.d3353f0a.chunk.js.map",
     "runtime-main.js": "/PlanesDeEstudio/static/js/runtime-main.8fbf12aa.js",
     "runtime-main.js.map": "/PlanesDeEstudio/static/js/runtime-main.8fbf12aa.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/PlanesDeEstudio/static/css/2.4c97ca4f.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/3.c5c205c0.chunk.js.map": "/PlanesDeEstudio/static/js/3.c5c205c0.chunk.js.map",
     "index.html": "/PlanesDeEstudio/index.html",
     "static/css/2.4c97ca4f.chunk.css.map": "/PlanesDeEstudio/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.0fcc9966.chunk.css.map": "/PlanesDeEstudio/static/css/main.0fcc9966.chunk.css.map",
+    "static/css/main.23011fee.chunk.css.map": "/PlanesDeEstudio/static/css/main.23011fee.chunk.css.map",
     "static/js/2.35d578cc.chunk.js.LICENSE.txt": "/PlanesDeEstudio/static/js/2.35d578cc.chunk.js.LICENSE.txt",
     "static/media/logout_white_24dp.3b92f307.svg": "/PlanesDeEstudio/static/media/logout_white_24dp.3b92f307.svg"
   },
@@ -20,7 +20,7 @@
     "static/js/runtime-main.8fbf12aa.js",
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.35d578cc.chunk.js",
-    "static/css/main.0fcc9966.chunk.css",
-    "static/js/main.79d571fd.chunk.js"
+    "static/css/main.23011fee.chunk.css",
+    "static/js/main.d3353f0a.chunk.js"
   ]
 }
