@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/static/css/main.a5640a89.chunk.css",
-    "main.js": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/static/js/main.e39bdaea.chunk.js",
-    "main.js.map": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/static/js/main.e39bdaea.chunk.js.map",
-    "runtime-main.js": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/static/js/runtime-main.3c719820.js",
-    "runtime-main.js.map": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/static/js/runtime-main.3c719820.js.map",
-    "static/css/2.d6008dad.chunk.css": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/static/css/2.d6008dad.chunk.css",
-    "static/js/2.6196d6cb.chunk.js": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/static/js/2.6196d6cb.chunk.js",
-    "static/js/2.6196d6cb.chunk.js.map": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/static/js/2.6196d6cb.chunk.js.map",
-    "static/js/3.c324dc31.chunk.js": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/static/js/3.c324dc31.chunk.js",
-    "static/js/3.c324dc31.chunk.js.map": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/static/js/3.c324dc31.chunk.js.map",
-    "index.html": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/index.html",
-    "static/css/2.d6008dad.chunk.css.map": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/static/css/2.d6008dad.chunk.css.map",
-    "static/css/main.a5640a89.chunk.css.map": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/static/css/main.a5640a89.chunk.css.map",
-    "static/js/2.6196d6cb.chunk.js.LICENSE.txt": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/static/js/2.6196d6cb.chunk.js.LICENSE.txt",
-    "static/media/delete_white_24dp.b2ce69d1.svg": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/static/media/delete_white_24dp.b2ce69d1.svg",
-    "static/media/logout_white_24dp.3b92f307.svg": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/static/media/logout_white_24dp.3b92f307.svg",
-    "static/media/refresh_white_24dp.0684a025.svg": "https://dino-4-fantasticos.github.io/PlanesDeEstudio/#/static/media/refresh_white_24dp.0684a025.svg"
+    "main.css": "/PlanesDeEstudio/static/css/main.a5640a89.chunk.css",
+    "main.js": "/PlanesDeEstudio/static/js/main.753cd589.chunk.js",
+    "main.js.map": "/PlanesDeEstudio/static/js/main.753cd589.chunk.js.map",
+    "runtime-main.js": "/PlanesDeEstudio/static/js/runtime-main.fe3aafca.js",
+    "runtime-main.js.map": "/PlanesDeEstudio/static/js/runtime-main.fe3aafca.js.map",
+    "static/css/2.d6008dad.chunk.css": "/PlanesDeEstudio/static/css/2.d6008dad.chunk.css",
+    "static/js/2.6196d6cb.chunk.js": "/PlanesDeEstudio/static/js/2.6196d6cb.chunk.js",
+    "static/js/2.6196d6cb.chunk.js.map": "/PlanesDeEstudio/static/js/2.6196d6cb.chunk.js.map",
+    "static/js/3.c324dc31.chunk.js": "/PlanesDeEstudio/static/js/3.c324dc31.chunk.js",
+    "static/js/3.c324dc31.chunk.js.map": "/PlanesDeEstudio/static/js/3.c324dc31.chunk.js.map",
+    "index.html": "/PlanesDeEstudio/index.html",
+    "static/css/2.d6008dad.chunk.css.map": "/PlanesDeEstudio/static/css/2.d6008dad.chunk.css.map",
+    "static/css/main.a5640a89.chunk.css.map": "/PlanesDeEstudio/static/css/main.a5640a89.chunk.css.map",
+    "static/js/2.6196d6cb.chunk.js.LICENSE.txt": "/PlanesDeEstudio/static/js/2.6196d6cb.chunk.js.LICENSE.txt",
+    "static/media/delete_white_24dp.b2ce69d1.svg": "/PlanesDeEstudio/static/media/delete_white_24dp.b2ce69d1.svg",
+    "static/media/logout_white_24dp.3b92f307.svg": "/PlanesDeEstudio/static/media/logout_white_24dp.3b92f307.svg",
+    "static/media/refresh_white_24dp.0684a025.svg": "/PlanesDeEstudio/static/media/refresh_white_24dp.0684a025.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.3c719820.js",
+    "static/js/runtime-main.fe3aafca.js",
     "static/css/2.d6008dad.chunk.css",
     "static/js/2.6196d6cb.chunk.js",
     "static/css/main.a5640a89.chunk.css",
-    "static/js/main.e39bdaea.chunk.js"
+    "static/js/main.753cd589.chunk.js"
   ]
 }
