@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from '@testing-library/react';
 import { ToastProvider } from 'react-toast-notifications';
-import { UserContext } from "../../context";
+import { UserContext } from "../../../react_src/context";
 
 import Profile from "./Profile";
 

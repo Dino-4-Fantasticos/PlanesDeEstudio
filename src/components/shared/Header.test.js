@@ -2,7 +2,7 @@ import React from "react";
 import { render } from '@testing-library/react';
 
 import Header from "./Header";
-import { UserContext } from "../../context";
+import { UserContext } from "../../../react_src/context";
 
 it("renderiza header cuando no se ha iniciado sesión", () => {
   const { getByText } = render(<Header/>);

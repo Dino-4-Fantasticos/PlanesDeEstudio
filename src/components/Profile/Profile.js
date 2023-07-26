@@ -5,7 +5,7 @@ import { useToasts } from 'react-toast-notifications';
 
 import Planificado from "./Planificado";
 import { BACKEND_URL, toQueryString } from "../utils"; 
-import { UserContext } from "../../context";
+import { UserContext } from "../../../react_src/context";
 
 async function fetchPlanificados(usuario, setPlanes, addToast) {
   const query = toQueryString({ usuario });

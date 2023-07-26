@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import { useToasts, ToastProvider } from 'react-toast-notifications';
-
+import { useToasts } from 'react-toast-notifications';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './sass/index.scss';
 
 import Header from '../src/components/shared/Header';
 import Footer from '../src/components/shared/Footer';
@@ -48,30 +49,35 @@ function App() {
   
   
   return (
-    <Router basename={PUBLIC_URL}>
-      <div className="App">
-        <UserContext.Provider value={loggedUser}>
-          <Header
-            checarSesion={checarSesion}
-            addToast={addToast}
-          />
-            <Route
-              exact path="/"
-              component={PlanesDeEstudio}
+    <ToastProvider
+      placement="bottom-center"
+      autoDismissTimeout={7000}
+    >
+      <Router basename={PUBLIC_URL}>
+        <div className="App">
+          <UserContext.Provider value={loggedUser}>
+            <Header
+              checarSesion={checarSesion}
+              addToast={addToast}
             />
-            <Route
-              path="/plan/:clave"
-              component={PlanDeEstudio}
-            />
-            <Route
-              path="/perfil/:matricula"
-              component={Profile}
-            />
-            <div className="flex-grow-1"></div>
-          <Footer />
-        </UserContext.Provider>
-      </div>
-    </Router>
+              <Route
+                exact path="/"
+                component={PlanesDeEstudio}
+              />
+              <Route
+                path="/plan/:clave"
+                component={PlanDeEstudio}
+              />
+              <Route
+                path="/perfil/:matricula"
+                component={Profile}
+              />
+              <div className="flex-grow-1"></div>
+            <Footer />
+          </UserContext.Provider>
+        </div>
+      </Router>
+    </ToastProvider>
   );
 }
 

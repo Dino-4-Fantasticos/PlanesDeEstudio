@@ -3,9 +3,9 @@ import { Navbar, Image, Nav, Button, Container } from 'react-bootstrap'
 import { GoogleLogin } from "react-google-login";
 
 import { PUBLIC_URL } from './../utils';
-import { login, logout, G_CLIENT_ID } from "../auth";
+import { login, logout, G_CLIENT_ID } from "../../../utils/auth";
 import logoutIcon from "./logout_white_24dp.svg";
-import { UserContext } from "../../context";
+import { UserContext } from "../../../react_src/context";
 
 /**
  * Parte superior, contiene controles de manejo de sesión y perfil
