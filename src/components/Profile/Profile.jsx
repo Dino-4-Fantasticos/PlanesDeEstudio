@@ -4,7 +4,7 @@ import axios from "axios";
 import { useToasts } from 'react-toast-notifications';
 
 import Planificado from "./Planificado";
-import { BACKEND_URL, toQueryString } from "../utils"; 
+import { BACKEND_URL, toQueryString } from "../../../utils/utils"; 
 import { UserContext } from "../../context";
 
 async function fetchPlanificados(usuario, setPlanes, addToast) {

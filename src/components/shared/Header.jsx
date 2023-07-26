@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import { Navbar, Image, Nav, Button, Container } from 'react-bootstrap'
 import { GoogleLogin } from "react-google-login";
 
-import { PUBLIC_URL } from './../utils';
-import { login, logout, G_CLIENT_ID } from "../auth";
+import { PUBLIC_URL } from '../../../utils/utils';
+import { login, logout, G_CLIENT_ID } from "../../../utils/auth";
 import logoutIcon from "./logout_white_24dp.svg";
 import { UserContext } from "../../context";
 

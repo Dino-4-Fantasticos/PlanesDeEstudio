@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { Button, Container, Row, Form } from 'react-bootstrap';
 
-import { PUBLIC_URL, BACKEND_URL } from '../utils'; 
+import { PUBLIC_URL, BACKEND_URL } from '../../../utils/utils'; 
 
 /** Vista de lista de todos los planes de estudio */
 export default function PlanesDeEstudio() {
