@@ -1,4 +1,4 @@
-import { PUBLIC_URL, BACKEND_URL } from "../utils";
+import { PUBLIC_URL, BACKEND_URL } from "../../../utils/utils";
 import deleteIcon from "../../assets/delete_white_24dp.svg";
 import axios from "axios";
 

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import { useToasts, ToastProvider } from 'react-toast-notifications';
+import { useToasts } from 'react-toast-notifications';
 
+import Header from '../components/shared/Header';
+import Footer from '../components/shared/Footer';
+import PlanDeEstudio from '../components/PlanDeEstudio/PlanDeEstudio';
+import PlanesDeEstudio from '../components/PlanesDeEstudio/PlanesDeEstudio';
+import Profile from '../components/Profile/Profile';
 
-import Header from '../src/components/shared/Header';
-import Footer from '../src/components/shared/Footer';
-import PlanDeEstudio from '../src/components/PlanDeEstudio/PlanDeEstudio';
-import PlanesDeEstudio from '../src/components/PlanesDeEstudio/PlanesDeEstudio';
-import Profile from '../src/components/Profile/Profile';
+import { UserContext } from "./../context";
+import { PUBLIC_URL } from '../../utils/utils';
+import { authenticate } from "./../../utils/auth";
 
-import { UserContext } from "../src/context";
-import { PUBLIC_URL } from './components/utils'; 
-import { authenticate } from "../utils/auth";
 
 async function checkSession(setLoggedUser, addToast) {
   const resAuth = await authenticate().catch((err) => err);

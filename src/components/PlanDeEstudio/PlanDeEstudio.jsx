@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useToasts } from 'react-toast-notifications';
 
-import { PUBLIC_URL, BACKEND_URL } from '../utils'; 
+import { PUBLIC_URL, BACKEND_URL } from '../../../utils/utils'; 
 import { UserContext } from "./../../context";
 
 import BarrasDeProgreso from './BarrasDeProgreso/BarrasDeProgreso';
