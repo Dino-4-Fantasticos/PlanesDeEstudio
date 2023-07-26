@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './../sass/index.scss';
 
 import Header from '../components/shared/Header';
 import Footer from '../components/shared/Footer';
@@ -45,17 +47,16 @@ function App() {
   }, [addToast]);
 
   /** Función que verifica si la sesión está iniciada y cambia el loggedUser correspondientemente. */
-  
-  
   return (
-    <Router basename={PUBLIC_URL}>
+    // <Router basename={PUBLIC_URL}>
       <div className="App">
         <UserContext.Provider value={loggedUser}>
           <Header
             checarSesion={checarSesion}
             addToast={addToast}
           />
-            <Route
+            <PlanesDeEstudio />
+            {/* <Route
               exact path="/"
               component={PlanesDeEstudio}
             />
@@ -66,12 +67,12 @@ function App() {
             <Route
               path="/perfil/:matricula"
               component={Profile}
-            />
+            /> */}
             <div className="flex-grow-1"></div>
           <Footer />
         </UserContext.Provider>
       </div>
-    </Router>
+    // </Router>
   );
 }
 
