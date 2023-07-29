@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import Header from './components/shared/Header';
 import Footer from './components/shared/Footer';
@@ -10,6 +11,7 @@ import Profile from './components/Profile/Profile';
 
 import { UserContext } from "./context";
 import { PUBLIC_URL } from './components/utils'; 
+import { G_CLIENT_ID } from "./components/auth";
 import { authenticate } from "./components/auth";
 
 async function checkSession(setLoggedUser, addToast) {
@@ -47,30 +49,32 @@ function App() {
   
   
   return (
-    <Router basename={PUBLIC_URL}>
-      <div className="App">
-        <UserContext.Provider value={loggedUser}>
-          <Header
-            checarSesion={checarSesion}
-            addToast={addToast}
-          />
-            <Route
-              exact path="/"
-              component={PlanesDeEstudio}
+    <GoogleOAuthProvider clientId={G_CLIENT_ID}>
+      <Router basename={PUBLIC_URL}>
+        <div className="App">
+          <UserContext.Provider value={loggedUser}>
+            <Header
+              checarSesion={checarSesion}
+              addToast={addToast}
             />
-            <Route
-              path="/plan/:clave"
-              component={PlanDeEstudio}
-            />
-            <Route
-              path="/perfil/:matricula"
-              component={Profile}
-            />
-            <div className="flex-grow-1"></div>
-          <Footer />
-        </UserContext.Provider>
-      </div>
-    </Router>
+              <Route
+                exact path="/"
+                component={PlanesDeEstudio}
+              />
+              <Route
+                path="/plan/:clave"
+                component={PlanDeEstudio}
+              />
+              <Route
+                path="/perfil/:matricula"
+                component={Profile}
+              />
+              <div className="flex-grow-1"></div>
+            <Footer />
+          </UserContext.Provider>
+        </div>
+      </Router>
+    </GoogleOAuthProvider>
   );
 }
 

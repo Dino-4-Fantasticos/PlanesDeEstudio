@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Navbar, Image, Nav, Button, Container } from 'react-bootstrap'
-import { GoogleLogin } from "react-google-login";
+import { GoogleLogin } from '@react-oauth/google';
 
 import { PUBLIC_URL } from './../utils';
 import { login, logout, G_CLIENT_ID } from "../auth";
