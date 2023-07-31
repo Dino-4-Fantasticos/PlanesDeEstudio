@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import { PUBLIC_URL, BACKEND_URL } from "./utils";
 
 /** ID de cliente de Google Cloud Platform para inicio de sesión con Google. */
-const G_CLIENT_ID = "78830882271-iabhrh1kgh03rbb0js65vh0iftf6jkjh.apps.googleusercontent.com";
+const G_CLIENT_ID = process.env.REACT_APP_G_CLIENT_ID;
 
 /** Nombre de la cookie utilizada para guardar la sesión de usuario. */
 const TOKEN_NAME = "pde_id";
