@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Image, Col, Container, Row } from 'react-bootstrap';
 import axios from "axios";
-import { useToasts } from 'react-toast-notifications';
+import toast from 'react-hot-toast';
 
 import Planificado from "./Planificado";
 import { BACKEND_URL, toQueryString } from "../utils"; 
@@ -27,12 +27,10 @@ export default function Profile() {
   const loggedUser = useContext(UserContext);
   const [planes, setPlanes] = useState([]);
 
-  const { addToast } = useToasts();
-
   useEffect(() => {
     if (!loggedUser) return;
-    fetchPlanificados(loggedUser.matricula, setPlanes, addToast);
-  }, [loggedUser, addToast]);
+    fetchPlanificados(loggedUser.matricula, setPlanes, toast);
+  }, [loggedUser]);
 
   return (
     <Container className="text-center mt-4">
@@ -51,7 +49,7 @@ export default function Profile() {
             {!planes.length && (
               <p style={{ fontSize: "2em", fontWeight: "bold" }}>No tienes planes guardados.</p>
             )}
-            {planes.map((p) => <Planificado plan={p} key={p.siglas} addToast={addToast} />)}
+            {planes.map((p) => <Planificado plan={p} key={p.siglas} addToast={toast} />)}
           </div>
         </Col>
       </Row>

@@ -13,12 +13,12 @@ export default function PlanesDeEstudio() {
   useEffect(() => {
     axios.get(`${BACKEND_URL}/planes`)
     .then(res => {
-      setPlanesDeEstudio(res.data.map(plan => ({ nombre: plan.siglas,  clave: plan.siglas})));
+      setPlanesDeEstudio(res?.data?.map(plan => ({ nombre: plan.siglas,  clave: plan.siglas})));
     })
     .catch((err) => err);
   }, []);
 
-  const planesFiltrados = planesDeEstudio.filter(carrera => carrera.nombre.includes(filtroCarreras)).sort((a, b) => (a.nombre).localeCompare(b.nombre));
+  const planesFiltrados = planesDeEstudio?.filter(carrera => carrera.nombre.includes(filtroCarreras)).sort((a, b) => (a.nombre).localeCompare(b.nombre));
 
   return (
     <Container fluid className="mt-3">
@@ -39,7 +39,7 @@ export default function PlanesDeEstudio() {
         </Form.Group>
       </Row>
       <Row className="mb-3" width ="100%">
-        {planesFiltrados.map(({clave, nombre}, indice) => (
+        {planesFiltrados?.map(({clave, nombre}, indice) => (
           <Button
             className="m-2 boton-carrera"
             key={indice}

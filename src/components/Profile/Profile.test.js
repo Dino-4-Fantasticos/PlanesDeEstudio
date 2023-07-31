@@ -1,6 +1,6 @@
 import React from "react";
-import { render } from '@testing-library/react';
-import { ToastProvider } from 'react-toast-notifications';
+import { render, screen } from '@testing-library/react';
+import { Toaster } from 'react-hot-toast';
 import { UserContext } from "../../context";
 
 import Profile from "./Profile";
@@ -12,18 +12,17 @@ it("renderiza la vista de perfil de usuario", () => {
     apellido: "Parker",
     matricula: "A00000000"
   }
-  const { getByText, container } = render(
-    <ToastProvider>
-      <UserContext.Provider value={usuario}>
-        <Profile/>
+  const { container } = render(
+    <UserContext.Provider value={usuario}>
+        <Profile />
+        <Toaster />
       </UserContext.Provider>
-    </ToastProvider>
   );
 
-  const nombreUsuario = getByText(/Peter Parker/);
+  const nombreUsuario = screen.getByText(/Peter Parker/);
   expect(nombreUsuario).toBeInTheDocument();
 
-  const matriculaUsuario = getByText(/A00000000/);
+  const matriculaUsuario = screen.getByText(/A00000000/);
   expect(matriculaUsuario).toBeInTheDocument();
 
   const imagenUsuario = container.querySelector(".imagen-perfil-vista")

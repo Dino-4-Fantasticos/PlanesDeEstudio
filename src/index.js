@@ -4,16 +4,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import './sass/index.scss';
 import reportWebVitals from './reportWebVitals';
-import { ToastProvider } from 'react-toast-notifications';
+import { Toaster } from 'react-hot-toast';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { G_CLIENT_ID } from './components/auth';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ToastProvider
-      placement="bottom-center"
-      autoDismissTimeout={7000}
-    >
+    <GoogleOAuthProvider clientId={G_CLIENT_ID}>
       <App />
-    </ToastProvider>
+      <Toaster />
+    </GoogleOAuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { useToasts } from 'react-toast-notifications';
+import toast from 'react-hot-toast';
 
 import { PUBLIC_URL, BACKEND_URL } from '../utils'; 
 import { UserContext } from "./../../context";
@@ -20,18 +20,13 @@ export default function PlanDeEstudio() {
 
   const { clave } = useParams();
 
-  const { addToast } = useToasts();
-
   const [planDeEstudios, setPlanDeEstudios] = useState(undefined);
 
   const [colores, setColores] = useState(undefined);
   const [colorSeleccionado, setColorSeleccionado] = useState(1);
   
   const agregarToastError = (mensaje) => {
-    addToast(`Error: ${mensaje || "Hubo un error de conexión al servidor."}`, {
-      appearance: 'error',
-      autoDismiss: true,
-    });
+    toast.error(`Error: ${mensaje || "Hubo un error de conexión al servidor."}`);
   }
 
   const clickMateria = (sem, materia) => {
@@ -56,10 +51,7 @@ export default function PlanDeEstudio() {
     }
     axios.put(`${BACKEND_URL}/planificados/${planDeEstudios._id}`, plan)
       .then(res => {
-        addToast(`¡Actualización exitosa! ${res.data}`, {
-          appearance: 'success',
-          autoDismiss: true,
-        });
+        toast.success(`¡Actualización exitosa! ${res.data}`);
       })
       .catch((err) => {
         console.log({...err});
@@ -138,7 +130,7 @@ export default function PlanDeEstudio() {
     }
 
     conseguirPlan();
-  }, [clave, loggedUser, matricula, addToast]);
+  }, [clave, loggedUser, matricula]);
 
   const stillLoading = !planDeEstudios || !colores;
   if (stillLoading) {

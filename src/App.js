@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { HashRouter as Router, Route } from 'react-router-dom';
-import { useToasts } from 'react-toast-notifications';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 import Header from './components/shared/Header';
 import Footer from './components/shared/Footer';
@@ -12,6 +12,7 @@ import { UserContext } from "./context";
 import { PUBLIC_URL } from './components/utils'; 
 import { authenticate } from "./components/auth";
 
+/** Función que verifica si la sesión está iniciada y cambia el loggedUser correspondientemente. */
 async function checkSession(setLoggedUser, addToast) {
   const resAuth = await authenticate().catch((err) => err);
   if (resAuth instanceof Error) {
@@ -35,37 +36,35 @@ async function checkSession(setLoggedUser, addToast) {
 function App() {
   const [loggedUser, setLoggedUser] = useState(undefined);
 
-  const { addToast } = useToasts();
-
-  const checarSesion = () => checkSession(setLoggedUser, addToast);
+  const checarSesion = () => checkSession(setLoggedUser, toast);
 
   useEffect(() => {
-    checkSession(setLoggedUser, addToast);
-  }, [addToast]);
+    checkSession(setLoggedUser, toast);
+  }, []);
 
-  /** Función que verifica si la sesión está iniciada y cambia el loggedUser correspondientemente. */
-  
-  
   return (
     <Router basename={PUBLIC_URL}>
       <div className="App">
         <UserContext.Provider value={loggedUser}>
+          Routes
           <Header
             checarSesion={checarSesion}
-            addToast={addToast}
+            addToast={toast}
           />
-            <Route
-              exact path="/"
-              component={PlanesDeEstudio}
-            />
-            <Route
-              path="/plan/:clave"
-              component={PlanDeEstudio}
-            />
-            <Route
-              path="/perfil/:matricula"
-              component={Profile}
-            />
+            <Routes>
+              <Route
+                exact path="/"
+                element={<PlanesDeEstudio />}
+              />
+              <Route
+                path="/plan/:clave"
+                element={<PlanDeEstudio />}
+              />
+              <Route
+                path="/perfil/:matricula"
+                element={<Profile />}
+              />
+            </Routes>
             <div className="flex-grow-1"></div>
           <Footer />
         </UserContext.Provider>
