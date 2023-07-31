@@ -13,12 +13,14 @@ export default function PlanesDeEstudio() {
   useEffect(() => {
     axios.get(`${BACKEND_URL}/planes`)
     .then(res => {
-      setPlanesDeEstudio(res.data.map(plan => ({ nombre: plan.siglas,  clave: plan.siglas})));
+      console.log(res)
+      const planes = res?.data?.planes || [];
+      setPlanesDeEstudio(planes.map(plan => ({ nombre: plan.siglas,  clave: plan.siglas})));
     })
     .catch((err) => err);
   }, []);
 
-  const planesFiltrados = planesDeEstudio.filter(carrera => carrera.nombre.includes(filtroCarreras)).sort((a, b) => (a.nombre).localeCompare(b.nombre));
+  const planesFiltrados = planesDeEstudio.filter(carrera => carrera?.nombre?.includes(filtroCarreras)).sort((a, b) => (a.nombre).localeCompare(b.nombre));
 
   return (
     <Container fluid className="mt-3">
