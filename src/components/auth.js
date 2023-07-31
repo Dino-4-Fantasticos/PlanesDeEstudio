@@ -31,8 +31,8 @@ async function authenticate() {
 };
 
 /** Guardar la sesión en una cookie y refrescar la página. */
-async function login(profileObj, addToast) {
-  const resLogin = await axios.post(`${BACKEND_URL}/login/`, profileObj).catch((err) => err);
+async function login(googleCredentials, addToast) {
+  const resLogin = await axios.post(`${BACKEND_URL}/login/`, googleCredentials).catch((err) => err);
   if (resLogin instanceof Error) {
     const errMsg = resLogin.response
       ? resLogin.response.data.msg

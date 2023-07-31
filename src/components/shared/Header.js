@@ -16,8 +16,8 @@ export default function Header({ checarSesion, addToast }) {
   const loggedUser = useContext(UserContext);
   const { matricula } = loggedUser || {};
 
-  const iniciarSesion = async ({ profileObj }) => {
-    await login(profileObj, addToast);
+  const iniciarSesion = async (googleCredentials) => {
+    await login(googleCredentials, addToast);
     checarSesion();
   }
 
