@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useToasts } from 'react-toast-notifications';
 
-import { PUBLIC_URL, BACKEND_URL } from '../utils'; 
 import { UserContext } from "./../../context";
+
+import {
+  updatePlanificado,
+  getPlan,
+  createPlanificado
+} from '../../api/api'
 
 import BarrasDeProgreso from './BarrasDeProgreso/BarrasDeProgreso';
 import Semestre from './Semestre/Semestre';
@@ -19,6 +23,7 @@ export default function PlanDeEstudio() {
   const { matricula } = loggedUser || {};
 
   const { clave } = useParams();
+  const history = useHistory();
 
   const { addToast } = useToasts();
 
@@ -54,9 +59,9 @@ export default function PlanDeEstudio() {
       etiquetas: JSON.parse(JSON.stringify(colores)),
       materias: planDeEstudios.materias.map(sem => sem.map(materia => ({ clave: materia.clave, color: materia.color}))),
     }
-    axios.put(`${BACKEND_URL}/planificados/${planDeEstudios._id}`, plan)
-      .then(res => {
-        addToast(`¡Actualización exitosa! ${res.data}`, {
+    updatePlanificado(planDeEstudios._id, plan)
+      .then(data => {
+        addToast(`¡Actualización exitosa! ${data}`, {
           appearance: 'success',
           autoDismiss: true,
         });
@@ -69,17 +74,17 @@ export default function PlanDeEstudio() {
 
   /** Consigue la información del plan de estudios **/
   useEffect(() => {
-    if (loggedUser === undefined) return;
+    console.log('conseguirPlan')
+    // if (loggedUser === undefined) return;
     
     const conseguirPlan = async () => {
+      
       if (loggedUser === null) {
-        const resGet = await axios
-          .get(`${BACKEND_URL}/planes/${clave}`)
+        const resGet = await getPlan(clave)
           .catch((err) => err);
         if (resGet instanceof Error) {
           console.log(resGet);
-          
-          window.location = PUBLIC_URL;
+          history.push("/")
           return;
         }
         const planOficial = JSON.parse(JSON.stringify(resGet.data));
@@ -103,13 +108,12 @@ export default function PlanDeEstudio() {
         return;
       }
         
-      const resPost = await axios
-        .post(`${BACKEND_URL}/planificados/crearPlanificadoBase/${clave}`, { matricula })
+      const resPost = await createPlanificado(clave, { matricula })
         .catch((err) => err);
       if (resPost instanceof Error) {
         console.log(resPost);
         agregarToastError(resPost?.response?.data?.msg);
-        window.location = PUBLIC_URL;
+        history.push("/");
         return;
       }
       const oficial = resPost.data.oficial;

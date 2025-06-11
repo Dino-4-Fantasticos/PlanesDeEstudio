@@ -13,27 +13,27 @@ import { UserContext } from "../../context";
  * @param {Boolean} loggedUser Indica el usuario de la sesión.
  */
 export default function Header({ checarSesion, addToast }) {
-  const loggedUser = useContext(UserContext);
-  const { matricula } = loggedUser || {};
+  // const loggedUser = useContext(UserContext);
+  // const { matricula } = loggedUser || {};
 
-  const iniciarSesion = async ({ profileObj }) => {
-    await login(profileObj, addToast);
-    checarSesion();
-  }
+  // const iniciarSesion = async ({ profileObj }) => {
+  //   await login(profileObj, addToast);
+  //   checarSesion();
+  // }
 
-  const cerrarSesion = () => {
-    logout();
-    checarSesion();
-  }
+  // const cerrarSesion = () => {
+  //   logout();
+  //   checarSesion();
+  // }
 
   return (
     <Navbar variant="dark" className="header-navbar p-0" expand="md" height={56}>
       <Container fluid className="fixed-top pr-3 pl-3" height={56}>
-        <Navbar.Brand href={`${PUBLIC_URL}/#/`}>
+        <Navbar.Brand href={`/`}>
           <h1> Planes de Estudio </h1>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="header-collapse" />
-        <Navbar.Collapse id="header-collapse" className="justify-content-end">
+        {/* <Navbar.Collapse id="header-collapse" className="justify-content-end">
           {loggedUser && (
             <>
               <Nav.Link href={`${PUBLIC_URL}/#/perfil/${matricula}`} className="element p-1">
@@ -68,7 +68,7 @@ export default function Header({ checarSesion, addToast }) {
               />
             </div>
           )}
-        </Navbar.Collapse>
+        </Navbar.Collapse> */}
       </Container>
     </Navbar>
   )

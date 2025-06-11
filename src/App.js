@@ -12,6 +12,7 @@ import { UserContext } from "./context";
 import { PUBLIC_URL } from './components/utils'; 
 import { authenticate } from "./components/auth";
 
+/** Función que verifica si la sesión está iniciada y cambia el loggedUser correspondientemente. */
 async function checkSession(setLoggedUser, addToast) {
   const resAuth = await authenticate().catch((err) => err);
   if (resAuth instanceof Error) {
@@ -33,19 +34,16 @@ async function checkSession(setLoggedUser, addToast) {
 }
 
 function App() {
-  const [loggedUser, setLoggedUser] = useState(undefined);
+  const [loggedUser, setLoggedUser] = useState(null);
 
   const { addToast } = useToasts();
 
   const checarSesion = () => checkSession(setLoggedUser, addToast);
 
-  useEffect(() => {
-    checkSession(setLoggedUser, addToast);
-  }, [addToast]);
+  // useEffect(() => {
+  //   checkSession(setLoggedUser, addToast);
+  // }, [addToast]);
 
-  /** Función que verifica si la sesión está iniciada y cambia el loggedUser correspondientemente. */
-  
-  
   return (
     <Router basename={PUBLIC_URL}>
       <div className="App">
