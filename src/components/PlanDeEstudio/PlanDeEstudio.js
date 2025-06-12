@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useCallback } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useToasts } from 'react-toast-notifications';
@@ -18,12 +18,12 @@ import Semestre from './Semestre/Semestre';
 import BotonesDeColor from './BotonesDeColor/BotonesDeColor';
 
 import refreshIcon from "./refresh_white_24dp.svg";
-import { plugin } from 'postcss';
+// import { plugin } from 'postcss';
 
 /** Vista de la tabla de un plan de estudio individual, junto con una lista de colores y barras de progreso **/
 export default function PlanDeEstudio() {
   const loggedUser = useContext(UserContext);
-  const { planDeEstudios, loadPlan, clearPlan, clickSemestre, clickMateria } = useContext(PlanContext);
+  const { planDeEstudios, loadPlan, clickSemestre, clickMateria } = useContext(PlanContext);
   const { colores, cambiarColores } = useContext(ColorContext);
   const { matricula } = loggedUser || {};
 
@@ -31,16 +31,13 @@ export default function PlanDeEstudio() {
   const history = useHistory();
 
   const { addToast } = useToasts();
-
-  // const [colores, setColores] = useState(undefined);
-  // const [colorSeleccionado, setColorSeleccionado] = useState(1);
   
-  const agregarToastError = (mensaje) => {
+  const agregarToastError = useCallback((mensaje) => {
     addToast(`Error: ${mensaje || "Hubo un error de conexión al servidor."}`, {
       appearance: 'error',
       autoDismiss: true,
     });
-  }
+  }, [addToast]);
 
   const guardarPlanificado = (e) => {
     let plan = {
@@ -133,7 +130,7 @@ export default function PlanDeEstudio() {
     }
 
     conseguirPlan();
-  }, [clave, loggedUser, matricula, addToast]);
+  }, [clave, loggedUser, matricula, addToast, loadPlan, cambiarColores, history, agregarToastError]);
 
   const stillLoading = !planDeEstudios || !colores;
   if (stillLoading) {
@@ -181,8 +178,7 @@ export default function PlanDeEstudio() {
       </Row>
       <Row>
         <Col className="m-0 p-0 mt-3">
-          <BarrasDeProgreso 
-            // listaColores={colores}
+          <BarrasDeProgreso
             cantMateriasPorColor={cantMateriasPorColor}
             totalMaterias={cantMaterias}
           />
@@ -195,9 +191,7 @@ export default function PlanDeEstudio() {
             numSemestre={indice}
             materias={semestre}
             tec21={planDeEstudios?.esTec21}
-            // colorSeleccionado={colorSeleccionado}
             clicks={{clickSemestre, clickMateria}}
-            // listaColores={colores}
           />
         ))}
       </Row>

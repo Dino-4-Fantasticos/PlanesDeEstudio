@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useCallback } from 'react';
 
 const emptyPlan = {
     _id: "",
@@ -14,25 +14,25 @@ const PlanContext = createContext(emptyPlan);
 export const PlanProvider = ({ children }) => {
     const [planDeEstudios, setPlan] = useState(emptyPlan);
 
-    const loadPlan = (planInfo) => {
+    const loadPlan = useCallback((planInfo) => {
         setPlan(planInfo);
-    }
+    }, [])
 
-    const clearPlan = () => {
+    const clearPlan = useCallback(() => {
         setPlan(emptyPlan);
-    }
+    }, [])
 
-    const clickMateria = (sem, materia, colorSeleccionado) => {
+    const clickMateria = useCallback((sem, materia, colorSeleccionado) => {
         let newPlan = JSON.parse(JSON.stringify(planDeEstudios));
         newPlan.materias[sem][materia].color = colorSeleccionado;
         setPlan(newPlan);
-    }
+    }, [planDeEstudios])
 
-    const clickSemestre = (sem, colorSeleccionado) => {
+    const clickSemestre = useCallback((sem, colorSeleccionado) => {
         let newPlan = JSON.parse(JSON.stringify(planDeEstudios));
         newPlan.materias[sem].forEach(materia => materia.color = colorSeleccionado);
         setPlan(newPlan);
-    }
+    }, [planDeEstudios])
 
     const providerValue = {
         planDeEstudios, loadPlan, clearPlan, clickMateria, clickSemestre

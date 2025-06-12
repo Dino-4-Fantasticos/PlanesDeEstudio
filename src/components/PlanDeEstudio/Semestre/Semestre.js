@@ -2,15 +2,19 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Col } from 'react-bootstrap';
 
 import ColorContext from '../../../context/colorContext';
+import PlanContext from '../../../context/planContext';
 
 import Materia from './Materia/Materia';
 
 /** Lista de materias con bloque que define qué semestre es **/
-export default function Semestre ({ numSemestre, materias, tec21, clicks }) {
+export default function Semestre ({ numSemestre }) {
   const { colores: listaColores, colorSeleccionado } = useContext(ColorContext);
+  const { planDeEstudios, clickSemestre } = useContext(PlanContext);
   const [colorDeFondo, setColorDeFondo] = useState(0);
 
-  const { clickSemestre, clickMateria } = clicks;
+  const { materias: semestre } = planDeEstudios;
+
+  const materias = semestre[numSemestre]
 
   const botonClickeado = () => {
     clickSemestre(numSemestre, colorSeleccionado);
@@ -57,9 +61,6 @@ export default function Semestre ({ numSemestre, materias, tec21, clicks }) {
           key={indice}
           nums={{numSemestre, numMateria: indice}}
           materia={materia}
-          tec21={tec21}
-          clickMateria={clickMateria}
-          // listaColores={listaColores}
         />
       ))}
     </Col>
