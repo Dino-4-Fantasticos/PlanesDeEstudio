@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Row, Col, Button, Modal, InputGroup, FormControl } from 'react-bootstrap';
 import { SliderPicker as Picker} from 'react-color';
+
+import ColorContext from '../../../context/colorContext';
 
 /** Input para cambiar el valor hexadecimal y el tag de un color **/
 function ColorInput({ color, actualizarNombre, actualizarColor, borrarColor, indice }) {
@@ -138,7 +140,9 @@ const BotonDeColor = ({ indice, color, cambiarColorSeleccionado, colorSelecciona
 }
 
 /** Lista de colores que se pueden colocar en cada materia del plan de estudios **/
-export default function BotonesDeColor({ colores, cambiarColores, cambiarColorSeleccionado, colorSeleccionado, cantMateriasPorColor, cantUnidadesPorColor }) {
+export default function BotonesDeColor({ cantMateriasPorColor, cantUnidadesPorColor }) {
+  const { colores, colorSeleccionado, cambiarColores, cambiarColorSeleccionado } = useContext(ColorContext);
+
   const [modalShow, setModalShow] = useState(false);
 
   const esconder = () => setModalShow(false);

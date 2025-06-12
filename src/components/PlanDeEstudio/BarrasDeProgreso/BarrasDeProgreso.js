@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ProgressBar } from 'react-bootstrap';
 
+import ColorContext from '../../../context/colorContext';
+
 /** Barra para indicar el porcentaje de los distintos colores en el plan de estudios. **/
-export default function BarrasDeProgreso({ listaColores, cantMateriasPorColor, totalMaterias }) {
+export default function BarrasDeProgreso({ cantMateriasPorColor, totalMaterias }) {
+  const { colores: listaColores } = useContext(ColorContext)
+
   return (
     <ProgressBar className="m-0 barra-progreso">
       {listaColores.map((color, indice) => {

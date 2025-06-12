@@ -8,7 +8,9 @@ import PlanDeEstudio from './components/PlanDeEstudio/PlanDeEstudio';
 import PlanesDeEstudio from './components/PlanesDeEstudio/PlanesDeEstudio';
 import Profile from './components/Profile/Profile';
 
-import { UserContext } from "./context";
+import { UserContext } from "./context/userContext";
+import { PlanProvider } from "./context/planContext";
+import { ColorProvider } from "./context/colorContext";
 import { PUBLIC_URL } from './components/utils'; 
 import { authenticate } from "./components/auth";
 
@@ -56,10 +58,14 @@ function App() {
               exact path="/"
               component={PlanesDeEstudio}
             />
-            <Route
-              path="/plan/:clave"
-              component={PlanDeEstudio}
-            />
+            <PlanProvider>
+              <ColorProvider>
+                <Route
+                  path="/plan/:clave"
+                  component={PlanDeEstudio}
+                />
+              </ColorProvider>
+            </PlanProvider>
             <Route
               path="/perfil/:matricula"
               component={Profile}

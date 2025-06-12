@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Row, Col } from 'react-bootstrap';
 
+import ColorContext from '../../../../context/colorContext';
+
 /** Bloque de una materia individual **/
-export default function Materia ({ nums, materia, tec21, clickMateria, listaColores }) {
+export default function Materia ({ nums, materia, tec21, clickMateria }) {
+  const { colores: listaColores, colorSeleccionado } = useContext(ColorContext);
+
   const {numSemestre, numMateria} = nums
 
   return (
-    <div className="materia" style={{backgroundColor: listaColores[materia.color]?.color ?? '#BF7913'}} onClick={() => clickMateria(numSemestre, numMateria)}>
+    <div className="materia" style={{backgroundColor: listaColores[materia.color]?.color ?? '#BF7913'}} onClick={() => clickMateria(numSemestre, numMateria, colorSeleccionado)}>
       <div className="labelMateria">
         <div className="nombre-materia">
           <label className="m-0">{materia.nombre}</label>

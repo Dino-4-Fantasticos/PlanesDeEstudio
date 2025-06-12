@@ -3,7 +3,9 @@ import { useParams, useHistory } from "react-router-dom";
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useToasts } from 'react-toast-notifications';
 
-import { UserContext } from "./../../context";
+import { UserContext } from "../../context/userContext";
+import PlanContext from '../../context/planContext';
+import ColorContext from '../../context/colorContext';
 
 import {
   updatePlanificado,
@@ -16,10 +18,13 @@ import Semestre from './Semestre/Semestre';
 import BotonesDeColor from './BotonesDeColor/BotonesDeColor';
 
 import refreshIcon from "./refresh_white_24dp.svg";
+import { plugin } from 'postcss';
 
 /** Vista de la tabla de un plan de estudio individual, junto con una lista de colores y barras de progreso **/
 export default function PlanDeEstudio() {
   const loggedUser = useContext(UserContext);
+  const { planDeEstudios, loadPlan, clearPlan, clickSemestre, clickMateria } = useContext(PlanContext);
+  const { colores, cambiarColores } = useContext(ColorContext);
   const { matricula } = loggedUser || {};
 
   const { clave } = useParams();
@@ -27,28 +32,14 @@ export default function PlanDeEstudio() {
 
   const { addToast } = useToasts();
 
-  const [planDeEstudios, setPlanDeEstudios] = useState(undefined);
-
-  const [colores, setColores] = useState(undefined);
-  const [colorSeleccionado, setColorSeleccionado] = useState(1);
+  // const [colores, setColores] = useState(undefined);
+  // const [colorSeleccionado, setColorSeleccionado] = useState(1);
   
   const agregarToastError = (mensaje) => {
     addToast(`Error: ${mensaje || "Hubo un error de conexión al servidor."}`, {
       appearance: 'error',
       autoDismiss: true,
     });
-  }
-
-  const clickMateria = (sem, materia) => {
-    let plan = JSON.parse(JSON.stringify(planDeEstudios));
-    plan.materias[sem][materia].color = colorSeleccionado;
-    setPlanDeEstudios(plan);
-  }
-
-  const clickSemestre = (sem) => {
-    let plan = JSON.parse(JSON.stringify(planDeEstudios));
-    plan.materias[sem].forEach(materia => materia.color = colorSeleccionado);
-    setPlanDeEstudios(plan);
   }
 
   const guardarPlanificado = (e) => {
@@ -99,8 +90,8 @@ export default function PlanDeEstudio() {
           }
         }));
     
-        setPlanDeEstudios(planOficial);
-        setColores([
+        loadPlan(planOficial);
+        cambiarColores([
           { color: "#BF7913", nombre: 'Incompleto' },
           { color: "#439630", nombre: 'Completo' }
         ]);
@@ -137,8 +128,8 @@ export default function PlanDeEstudio() {
         ),
       }
 
-      setPlanDeEstudios(plan);
-      setColores(planificado.etiquetas);
+      loadPlan(plan);
+      cambiarColores(planificado.etiquetas);
     }
 
     conseguirPlan();
@@ -184,10 +175,6 @@ export default function PlanDeEstudio() {
           </Col>
         }
         <BotonesDeColor
-          colores={colores}
-          cambiarColores={setColores}
-          cambiarColorSeleccionado={setColorSeleccionado}
-          colorSeleccionado={colorSeleccionado}
           cantMateriasPorColor={cantMateriasPorColor}
           cantUnidadesPorColor={cantUnidadesPorColor}
         />
@@ -195,7 +182,7 @@ export default function PlanDeEstudio() {
       <Row>
         <Col className="m-0 p-0 mt-3">
           <BarrasDeProgreso 
-            listaColores={colores}
+            // listaColores={colores}
             cantMateriasPorColor={cantMateriasPorColor}
             totalMaterias={cantMaterias}
           />
@@ -208,9 +195,9 @@ export default function PlanDeEstudio() {
             numSemestre={indice}
             materias={semestre}
             tec21={planDeEstudios?.esTec21}
-            colorSeleccionado={colorSeleccionado}
+            // colorSeleccionado={colorSeleccionado}
             clicks={{clickSemestre, clickMateria}}
-            listaColores={colores}
+            // listaColores={colores}
           />
         ))}
       </Row>
