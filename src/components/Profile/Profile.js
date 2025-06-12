@@ -1,16 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Image, Col, Container, Row } from 'react-bootstrap';
-import axios from "axios";
 import { useToasts } from 'react-toast-notifications';
 
+import { getPlanificadosUser } from '../../api/api'
+
 import Planificado from "./Planificado";
-import { BACKEND_URL, toQueryString } from "../utils"; 
-import { UserContext } from "../../context/userContext";
+import UserContext from "../../context/userContext";
 
 async function fetchPlanificados(usuario, setPlanes, addToast) {
-  const query = toQueryString({ usuario });
-  const resGet = await axios
-    .get(`${BACKEND_URL}/planificados?${query}`)
+  const resGet = await getPlanificadosUser({ usuario })
     .catch((err) => err);
   if (resGet instanceof Error) {
     addToast(`Error: ${resGet.message}`, {

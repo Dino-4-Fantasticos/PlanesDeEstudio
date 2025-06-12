@@ -3,7 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useToasts } from 'react-toast-notifications';
 
-import { UserContext } from "../../context/userContext";
+import UserContext from "../../context/userContext";
 import PlanContext from '../../context/planContext';
 import ColorContext from '../../context/colorContext';
 

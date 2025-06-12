@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext, useCallback } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
 
@@ -8,7 +8,7 @@ import PlanDeEstudio from './components/PlanDeEstudio/PlanDeEstudio';
 import PlanesDeEstudio from './components/PlanesDeEstudio/PlanesDeEstudio';
 import Profile from './components/Profile/Profile';
 
-import { UserContext } from "./context/userContext";
+import UserContext from "./context/userContext";
 import { PlanProvider } from "./context/planContext";
 import { ColorProvider } from "./context/colorContext";
 import { PUBLIC_URL } from './components/utils'; 
@@ -36,43 +36,40 @@ async function checkSession(setLoggedUser, addToast) {
 }
 
 function App() {
-  const [loggedUser, setLoggedUser] = useState(null);
-
+  const { login } = useContext(UserContext);
   const { addToast } = useToasts();
 
-  const checarSesion = () => checkSession(setLoggedUser, addToast);
+  const checarSesion = useCallback(() => checkSession(login, addToast), [addToast, login]);
 
-  // useEffect(() => {
-  //   checkSession(setLoggedUser, addToast);
-  // }, [addToast]);
+  useEffect(() => {
+    checarSesion();
+  }, [checarSesion]);
 
   return (
     <Router basename={PUBLIC_URL}>
       <div className="App">
-        <UserContext.Provider value={loggedUser}>
-          <Header
-            checarSesion={checarSesion}
-            addToast={addToast}
+        <Header
+          checarSesion={checarSesion}
+          addToast={addToast}
+        />
+          <Route
+            exact path="/"
+            component={PlanesDeEstudio}
           />
-            <Route
-              exact path="/"
-              component={PlanesDeEstudio}
-            />
-            <PlanProvider>
-              <ColorProvider>
-                <Route
-                  path="/plan/:clave"
-                  component={PlanDeEstudio}
-                />
-              </ColorProvider>
-            </PlanProvider>
-            <Route
-              path="/perfil/:matricula"
-              component={Profile}
-            />
-            <div className="flex-grow-1"></div>
-          <Footer />
-        </UserContext.Provider>
+          <PlanProvider>
+            <ColorProvider>
+              <Route
+                path="/plan/:clave"
+                component={PlanDeEstudio}
+              />
+            </ColorProvider>
+          </PlanProvider>
+          <Route
+            path="/perfil/:matricula"
+            component={Profile}
+          />
+          <div className="flex-grow-1"></div>
+        <Footer />
       </div>
     </Router>
   );

@@ -5,6 +5,7 @@ import App from './App';
 import './sass/index.scss';
 import reportWebVitals from './reportWebVitals';
 import { ToastProvider } from 'react-toast-notifications';
+import { UserProvider } from './context/userContext'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,7 +13,9 @@ ReactDOM.render(
       placement="bottom-center"
       autoDismissTimeout={7000}
     >
-      <App />
+      <UserProvider>
+        <App />
+      </UserProvider>
     </ToastProvider>
   </React.StrictMode>,
   document.getElementById('root')
