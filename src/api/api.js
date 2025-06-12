@@ -1,5 +1,5 @@
 import axios from "axios";
-import { UPDATE_PLANIFICADO_URL, GET_PLAN_URL, CREATE_PLANIFICADO_URL } from '../constants/apiConstants'
+import { UPDATE_PLANIFICADO_URL, GET_PLAN_URL, CREATE_PLANIFICADO_URL, GET_PLANES_URL } from '../constants/apiConstants'
 
 export function createPlanificado(clave, body) {
     return axios.post(CREATE_PLANIFICADO_URL.replace(":clave", clave), body)
@@ -7,6 +7,11 @@ export function createPlanificado(clave, body) {
 
 export function updatePlanificado(planId, plan) {
     return axios.put(UPDATE_PLANIFICADO_URL.replace(':planId', planId), plan)
+        .then(res => res.data);
+}
+
+export function getPlanes() {
+    return axios.get(GET_PLANES_URL)
         .then(res => res.data);
 }
 

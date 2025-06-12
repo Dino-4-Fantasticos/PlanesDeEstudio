@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from "axios";
+import { useState, useEffect } from 'react';
 import { Button, Container, Row, Form } from 'react-bootstrap';
 
-import { PUBLIC_URL, BACKEND_URL } from '../utils'; 
+import { getPlanes } from '../../api/api'
 
 /** Vista de lista de todos los planes de estudio */
 export default function PlanesDeEstudio() {
@@ -11,9 +10,9 @@ export default function PlanesDeEstudio() {
   const [filtroCarreras, setFiltroCarreras] = useState('');
 
   useEffect(() => {
-    axios.get(`${BACKEND_URL}/planes`)
-    .then(res => {
-      setPlanesDeEstudio(res.data.map(plan => ({ nombre: plan.siglas,  clave: plan.siglas})));
+    getPlanes()
+    .then(data => {
+      setPlanesDeEstudio(data.map(plan => ({ nombre: plan.siglas,  clave: plan.siglas})));
     })
     .catch((err) => err);
   }, []);
@@ -45,7 +44,7 @@ export default function PlanesDeEstudio() {
             key={indice}
             variant="primary"
             value={clave}
-            href={`${PUBLIC_URL}/#/plan/${clave}`}
+            href={`/#/plan/${clave}`}
           >
             {nombre}    
           </Button>
