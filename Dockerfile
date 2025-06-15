@@ -10,11 +10,13 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
+RUN npm rebuild node-sass
+
 # Copy the rest of your application files
 COPY . .
 
 # Expose the port your app runs on
-EXPOSE 3500
+EXPOSE 3000
 
 # Define the command to run your app
 CMD ["npm", "start"]
