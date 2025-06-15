@@ -22,7 +22,7 @@ import refreshIcon from "./refresh_white_24dp.svg";
 
 /** Vista de la tabla de un plan de estudio individual, junto con una lista de colores y barras de progreso **/
 export default function PlanDeEstudio() {
-  const loggedUser = useContext(UserContext);
+  const { loggedUser } = useContext(UserContext);
   const { planDeEstudios, loadPlan, clickSemestre, clickMateria } = useContext(PlanContext);
   const { colores, cambiarColores } = useContext(ColorContext);
   const { matricula } = loggedUser || {};
@@ -66,8 +66,9 @@ export default function PlanDeEstudio() {
     // if (loggedUser === undefined) return;
     
     const conseguirPlan = async () => {
-      
+      console.log("loggedUser", loggedUser)
       if (loggedUser === null) {
+        console.log('loggedUser null')
         const resGet = await getPlan(clave)
           .catch((err) => err);
         if (resGet instanceof Error) {
